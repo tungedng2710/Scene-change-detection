@@ -49,7 +49,6 @@ def run_change_detection(ref_path: str = None,
             describe = describe_change(provider=llm_config.PROVIDER,
                                        api_key=llm_config.GEMINI_API_KEY,
                                        url=llm_config.OLLAMA_URL, 
-                                       model=llm_config.OLLAMA_MODEL_NAME,
                                        ref_path=ref_path,
                                        test_path=test_path)
         else:

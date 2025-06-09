@@ -5,7 +5,7 @@ PROVIDER = "gemini" # ollama or gemini
 OLLAMA_URL = "http://27.66.108.135:7860/api/generate"
 OLLAMA_MODEL_NAME = "gemma3:27b"
 GEMINI_MODEL_NAME = "gemini-2.0-flash"
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_KEY = 'AIzaSyBv6EN6aibqHtIAH1p2agOzC66hF_rcbrM'
 
 DEFAULT_INSTRUCTION = """You are the supervisor to monitor the change of scene,
 The first image is the reference,
