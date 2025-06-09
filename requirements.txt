@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+Pillow
+numpy
+albumentations
+tifffile
+scikit-image
+tqdm
+einops
+timm
+datasets[vision]
+python-multipart
+transformer
