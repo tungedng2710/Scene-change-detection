@@ -3,7 +3,7 @@ from google import genai
 from google.genai import types
 from ollama_api import  ollama_stream_inference
 import PIL.Image
-from app.segment_any_change import infer
+from segment_any_change import infer
 import llm_config 
 
 def describe_change(provider: str = "ollama",
