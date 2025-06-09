@@ -29,7 +29,8 @@ you can use the provided `Dockerfile` or `docker-compose.yaml` for a containeris
 To launch the API locally after installing the requirements:
 
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 7866 --reload
+cd app
+uvicorn main:app --host 0.0.0.0 --port 7866 --reload
 ```
 
 Open your browser at `http://localhost:7866` to access the demo page.
