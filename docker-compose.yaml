@@ -6,7 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile        # rename if you used another name
     image: tonai_changedetection:v1.0
-
+    env_file:
+      - .env
     ports:
       - "7866:7866"
 
