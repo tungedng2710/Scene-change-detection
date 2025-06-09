@@ -2,30 +2,20 @@ version: "3.8"
 
 services:
   changedetection:
-    build: .
-    image: changedetection:v1.0
-    container_name: changedetection
-    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile        # rename if you used another name
+    image: tonai_changedetection:v1.0
 
-    # expose FastAPI outside
     ports:
-      - "7867:7866"
+      - "7866:7866"
 
-    # mount the whole repo �~F~R /app
     volumes:
-      - ./:/app
+      - ./app:/app                  # keep in-container path in sync
 
+    runtime: nvidia
+
+    restart: unless-stopped
     working_dir: /app
-
-    # �~_~T~Q point uvicorn at app.main
     command: >
-      uvicorn app.main:app --host 0.0.0.0 --port 7866 --reload
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=0
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+      uvicorn main:app --host 0.0.0.0 --port 7866 --reload
