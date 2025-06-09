@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 import shutil, subprocess, uuid, glob, os
 import time
-from pipeline import run_change_detection
+from pipeline import run_change_detection, run_change_detection_async
 import os
 
 BASE_DIR = Path(__file__).resolve().parent

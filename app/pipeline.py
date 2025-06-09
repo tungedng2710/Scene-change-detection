@@ -4,7 +4,8 @@ from google.genai import types
 from ollama_api import  ollama_stream_inference
 import PIL.Image
 from segment_any_change import infer
-import llm_config 
+import llm_config
+import asyncio
 
 def describe_change(provider: str = "ollama",
                     api_key: str = None,
@@ -57,7 +58,32 @@ def run_change_detection(ref_path: str = None,
         return describe, output_mask_path, percent_content
     except Exception as e:
         return f"Error occurred: {e}", None, percent_content
-    
+
+
+async def run_change_detection_async(ref_path=None, test_path=None,
+                                     output_mask_path=None, describe_result=False):
+    loop = asyncio.get_running_loop()
+
+    # Kick infer() off-thread so it doesn't block the event loop
+    infer_task = loop.run_in_executor(
+        None, infer, ref_path, test_path, output_mask_path
+    )
+
+    # Kick description either off-thread or as native async if you refactor later
+    if describe_result:
+        desc_task = loop.run_in_executor(
+            None,
+            describe_change,
+            llm_config.PROVIDER, llm_config.GEMINI_API_KEY,
+            llm_config.OLLAMA_URL, ref_path, test_path
+        )
+    else:
+        desc_task = asyncio.sleep(0, result=llm_config.UPGRADE_INSTRUCTION)
+
+    # Gather results concurrently
+    percent_content, describe = await asyncio.gather(infer_task, desc_task)
+    return describe, output_mask_path, percent_content
+
     
 if __name__ == "__main__":
     current_time = time.time()
