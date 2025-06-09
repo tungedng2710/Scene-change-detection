@@ -4,7 +4,7 @@ It uses the [Segment Any Change](https://github.com/Z-Zheng/pytorch-change-model
 an overlay mask and can optionally describe the differences with a vision language model.
 
 <p align="center">
-  <img src="https://github.com/tungedng2710/Scene-change-detection/blob/main/app/static/demo.png?raw=true" alt="Descriptive text for your image" width="500"/>
+  <img src="https://github.com/tungedng2710/Scene-change-detection/blob/main/app/static/demo.png?raw=true" alt="Demo web app" width="100%"/>
 </p>
 
 ## Features
