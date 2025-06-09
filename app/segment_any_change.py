@@ -94,6 +94,7 @@ def load_and_resize(url_or_path, size=(1024, 1024)):
 def infer(
     img1_path: str,
     img2_path: str,
+    overlay_path: Optional[str] = "outputs/change_mask_overlay.png",
     model_type: str = "vit_l",
     checkpoint: str = "weights/sam_vit_l_0b3195.pth",
     points_per_side: int = 32,
@@ -101,7 +102,6 @@ def infer(
     conf_thresh: int = 145,
     normalized_feature: bool = True,
     bitemporal_match: bool = True,
-    overlay_path: Optional[str] = "outputs/change_mask_overlay.png",
     percent_path: str = "temp_percent.txt") -> float:
     """
     Run AnyChange on two images and (optionally) save an overlay.

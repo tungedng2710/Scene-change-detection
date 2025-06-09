@@ -1,6 +1,6 @@
 import os
 
-USE_VLM = True
+USE_VLM = False
 PROVIDER = "gemini" # ollama or gemini
 OLLAMA_URL = "http://27.66.108.135:7860/api/generate"
 OLLAMA_MODEL_NAME = "gemma3:27b"

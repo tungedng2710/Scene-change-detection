@@ -65,6 +65,7 @@ async def run_change_detection_async(ref_path=None, test_path=None,
     loop = asyncio.get_running_loop()
 
     # Kick infer() off-thread so it doesn't block the event loop
+    # output_mask_path = f"outputs/{time.time()}_mask_overlay.png"
     infer_task = loop.run_in_executor(
         None, infer, ref_path, test_path, output_mask_path
     )
