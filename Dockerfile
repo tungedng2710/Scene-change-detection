@@ -2,7 +2,7 @@
 ###############################################################################
 # 1. CUDA + Ubuntu base (already contains the libraries your GPU code needs)
 ###############################################################################
-FROM nvidia/cuda:12.5.0-runtime-ubuntu22.04 AS base
+FROM nvidia/cuda:12.0.0-runtime-ubuntu22.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 LABEL maintainer="you@example.com"
 
