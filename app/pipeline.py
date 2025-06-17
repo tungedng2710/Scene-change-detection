@@ -39,14 +39,12 @@ def describe_change(provider: str = "ollama",
 
 def run_change_detection(ref_path: str = None,
                          test_path: str = None,
-                         output_mask_path: str = None,
-                         describe_result: bool = False):
+                         output_mask_path: str = None):
     percent_content = "0.0%"
     try:   
         percent_content = infer(ref_path, test_path, overlay_path=output_mask_path)
-        print(percent_content)
-        if describe_result:
-            # Using gemini by default as an example, can be made configurable
+        # print(percent_content)
+        if llm_config.USE_VLM: # Use multi-modal LLMs to describe the images
             describe = describe_change(provider=llm_config.PROVIDER,
                                        api_key=llm_config.GEMINI_API_KEY,
                                        url=llm_config.OLLAMA_URL, 

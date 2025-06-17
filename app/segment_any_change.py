@@ -128,7 +128,7 @@ def infer(
     changemasks, *_ = m.forward(img1, img2)  # automatic mode
     img, percent = show_mask(changemasks)
 
-    # Path(percent_path).write_text(f"{percent:.2f}%")
+    # Path(percent_path).write_text(f"{percent:.2f}%")gheps
 
     if percent > 0.0 and overlay_path:
         fig, _ = show_change_masks(img1, img2, changemasks)

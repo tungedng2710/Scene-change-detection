@@ -40,7 +40,7 @@ async def detect(
             
     current_time = time.time()
     mask_path = f"outputs/{current_time}_mask_overlay.png"
-    logs, mask_path, percent = run_change_detection(ref_path, test_path, mask_path, True)
+    logs, mask_path, percent = run_change_detection(ref_path, test_path, mask_path)
 
     return {
         "logs": logs,

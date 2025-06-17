@@ -20,3 +20,18 @@ services:
     working_dir: /app
     command: >
       uvicorn main:app --host 0.0.0.0 --port 7866 --reload
+
+  triton:
+    image: nvcr.io/nvidia/tritonserver:23.05-py3
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - "8000:8000"   # HTTP
+      - "8001:8001"   # gRPC
+      - "8002:8002"   # metrics
+    volumes:
+      - ./models:/models   # mount your versioned model repo here
+    restart: unless-stopped
+    command: >
+      tritonserver --model-repository=/models
