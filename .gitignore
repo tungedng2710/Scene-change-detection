@@ -193,6 +193,15 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# data files
 app/outputs/*
 app/tmp/*
 app/weights/*.pth
+app/weights/*.onnx
+app/test*.py
+models
+
+# segment anything repos
+segment-anything
+sam_onnx_full_export
+samexporter

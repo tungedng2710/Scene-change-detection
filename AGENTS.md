@@ -1,10 +1,5 @@
 # AGENTS instructions
 
-## Testing
-Run `pytest -n auto` after code changes.
-
-## Style
-Format Python code with `black` and check with `flake8`.
-
-## Commit messages
-Reference the related issue number in every commit.
+# How to setup
+Build docker image: `tonai_changedetection:v1.0` from the `Dockerfile`
+Run `docker compose up -d` to start all services
